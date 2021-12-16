@@ -1,0 +1,3494 @@
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (102.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (73.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShorts (20211215131217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "shorturl" varchar, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211215131217"]]
+  [1m[36mTRANSACTION (87.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-12-15 13:18:21.256856"], ["updated_at", "2021-12-15 13:18:21.256856"]]
+  [1m[36mTRANSACTION (74.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-12-15 20:19:30 +0700
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-6.1.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-6.1.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 38.0ms | Allocations: 406)
+Completed 200 OK in 52ms (Views: 44.1ms | ActiveRecord: 0.0ms | Allocations: 3467)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-15 20:19:30 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:19:36 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1111)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:19:51 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 404 Not Found in 6ms (ActiveRecord: 1.5ms | Allocations: 1499)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short with 'id'=1):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:20:02 +0700
+Processing by ShortsController#index as */*
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 589)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:21:04 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abc.ciom/xasasa-asasa/asasa/", "shorturl"=>"a1b2c3"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 134)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               url):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:21:20 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 585)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-15 20:22:29 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-6.1.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-6.1.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.9ms | Allocations: 183)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.0ms | Allocations: 794)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:22:49 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abc.ciom/xasasa-asasa/asasa/", "shorturl"=>"a1b2c3"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 131)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               url):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:22:55 +0700
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"http://abc.ciom/xasasa-asasa/asasa/", "shorturl"=>"a1b2c3"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 588)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:22:56 +0700
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"http://abc.ciom/xasasa-asasa/asasa/", "shorturl"=>"a1b2c3"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 608)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:30:15 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abc.ciom/xasasa-asasa/asasa/", "shorturl"=>"a1b2c3", "clicked"=>"0"}
+Completed 400 Bad Request in 0ms (Allocations: 138)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               clicked):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:34:37 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (20.9ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 143ms (Views: 142.1ms | ActiveRecord: 24.0ms | Allocations: 1159)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:34:41 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms | Allocations: 486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short with 'id'=1):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-15 20:34:43 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:38:44 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 598)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:42:22 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http:asasas.com", "shortcode"=>"aasasa", "short"=>{"url"=>"http:asasas.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mShort Create (20.0ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["url", "http:asasas.com"], ["created_at", "2021-12-15 13:42:22.793636"], ["updated_at", "2021-12-15 13:42:22.793636"]]
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (72.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+Completed 201 Created in 166ms (Views: 14.4ms | ActiveRecord: 92.1ms | Allocations: 6998)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:42:44 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http:asasas.com", "shorturl"=>"aasasa", "short"=>{"url"=>"http:asasas.com", "shorturl"=>"aasasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http:asasas.com"], ["shorturl", "aasasa"], ["created_at", "2021-12-15 13:42:44.737204"], ["updated_at", "2021-12-15 13:42:44.737204"]]
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (71.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+Completed 201 Created in 76ms (Views: 0.4ms | ActiveRecord: 71.3ms | Allocations: 2819)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:43:04 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http:aasas.com"], ["shorturl", "a1121"], ["created_at", "2021-12-15 13:43:04.568413"], ["updated_at", "2021-12-15 13:43:04.568413"]]
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (77.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:20:in `create'
+Completed 201 Created in 86ms (Views: 0.6ms | ActiveRecord: 77.6ms | Allocations: 3392)
+
+
+Started POST "/shorts?url=http://asasaas.com&shorturl=asasasas" for 127.0.0.1 at 2021-12-15 20:44:15 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://asasaas.com", "shorturl"=>"asasasas"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 131)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               url):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started POST "/shorts?url=http://asasaas.com&shorturl=asasasas" for 127.0.0.1 at 2021-12-15 20:45:01 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://asasaas.com", "shorturl"=>"asasasas"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 131)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               url):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started POST "/shorts?url=http://asasaas.com&shorturl=asasasas" for 127.0.0.1 at 2021-12-15 20:45:33 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://asasaas.com", "shorturl"=>"asasasas", "clicked"=>"0"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 134)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               clicked):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-15 20:45:49 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"\"http://abc.ciom/xasasa-asasa/asasa/\"", "shorturl"=>"\"a1b2c3\"", "clicked"=>"0"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 134)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shorturl
+               controller
+               action
+               clicked):
+  
+app/controllers/shorts_controller.rb:49:in `short_params'
+app/controllers/shorts_controller.rb:18:in `create'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:45:56 +0700
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"\"http://abc.ciom/xasasa-asasa/asasa/\"", "shorturl"=>"\"a1b2c3\"", "clicked"=>"0"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 937)
+
+
+Started HEAD "/shorts" for 127.0.0.1 at 2021-12-15 20:46:02 +0700
+Processing by ShortsController#index as */*
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 925)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-15 20:46:08 +0700
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"\"http://abc.ciom/xasasa-asasa/asasa/\"", "shorturl"=>"\"a1b2c3\"", "clicked"=>"0"}
+  [1m[36mShort Load (0.6ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.6ms | Allocations: 926)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:49:44 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 4284)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:50:12 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 4260)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:50:13 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 578)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:50:14 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 578)
+
+
+Started GET "/shorts/1" for 127.0.0.1 at 2021-12-15 20:52:30 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 580)
+
+
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:11:35 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"1"}
+Completed 404 Not Found in 0ms (Allocations: 122)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short without an ID):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:12:03 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 3878)
+
+
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:12:04 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 578)
+
+
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:15:09 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+...shorturl", to: "shorts#show" as: :short
+...                             ^~
+):
+  
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:15:11 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/1"):
+  
+Started GET "/1" for 127.0.0.1 at 2021-12-15 21:15:12 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/1"):
+  
+Started GET "/1aasasa" for 127.0.0.1 at 2021-12-15 21:15:20 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/1aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:15:40 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:17:08 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+...shorturl", to: "shorts#show" as: :short
+...                             ^~
+):
+  
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:17:09 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:17:09 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:17:10 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:17:13 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:18:42 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+... "/:slug", to: "shorts#show" as: :short
+...                             ^~
+):
+  
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:18:43 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:18:44 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:18:47 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:20:04 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+... "/:slug", to: "shorts#show" as: :short
+...                             ^~
+):
+  
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:20:39 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.3ms | Allocations: 1972)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short with 'id'=aasasa):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:20:40 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 467)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short with 'id'=aasasa):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:20:40 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 467)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short with 'id'=aasasa):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:21:53 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.6ms | Allocations: 4483)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00005622c84eb0b0>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:21:54 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 3229)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00005622c84eb0b0>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:24:00 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.5ms | Allocations: 4550)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00007f1f68656d30>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:24:01 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 3230)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00007f1f68656d30>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:24:02 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 3230)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00007f1f68656d30>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:24:08 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 3228)
+
+
+  
+NoMethodError (undefined method `find_by_slug' for #<Class:0x00007f1f68656d30>
+Did you mean?  find_by_sql):
+  
+app/controllers/shorts_controller.rb:44:in `set_short'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:25:56 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 1.2ms | Allocations: 4690)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:25:57 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 596)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:25:59 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 597)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:26:01 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 596)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:26:24 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 4438)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:26:25 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 596)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:26:26 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 596)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:21:27 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:44:in `set_short'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1059)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:22:29 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+  [1m[36mShort Update (0.4ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 1], ["updated_at", "2021-12-15 21:22:29.310671"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+  [1m[36mTRANSACTION (83.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+Completed 200 OK in 100ms (Views: 0.4ms | ActiveRecord: 84.6ms | Allocations: 8149)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:22:34 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+  [1m[36mShort Update (0.2ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 2], ["updated_at", "2021-12-15 21:22:34.071075"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+  [1m[36mTRANSACTION (73.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:14:in `show'
+Completed 200 OK in 81ms (Views: 0.3ms | ActiveRecord: 74.0ms | Allocations: 4046)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:22:41 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1044)
+
+
+  
+NoMethodError (undefined method `clicked' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:14:in `show'
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:24:08 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:45:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:45:in `set_short'
+Completed 404 Not Found in 5ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1891)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:24:09 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:45:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 466)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:24:10 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:45:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 466)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:24:10 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:45:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 466)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:24:22 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:46:in `set_short'
+Completed 500 Internal Server Error in 7ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 1967)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:15:in `show'
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:25:38 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:50:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:50:in `set_short'
+Completed 500 Internal Server Error in 9ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 1968)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:15:in `show'
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:25:42 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:50:in `set_short'
+Completed 500 Internal Server Error in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 542)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:15:in `show'
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:26:10 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:57: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/shorts_controller.rb:57: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/shorts_controller.rb:57: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:26:35 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:51:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:51:in `set_short'
+Completed 404 Not Found in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 1921)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:27:29 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:51:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:51:in `set_short'
+Completed 404 Not Found in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1922)
+
+
+Started GET "/aasasad" for 127.0.0.1 at 2021-12-16 04:29:49 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasad"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasad"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+Completed 404 Not Found in 8ms (Views: 3.5ms | ActiveRecord: 0.7ms | Allocations: 1920)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:29:52 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 3], ["updated_at", "2021-12-15 21:29:52.956042"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (50.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 50.7ms | Allocations: 8509)
+
+
+  
+NoMethodError (undefined method `urt' for #<Short:0x00007f1f68828a78>
+Did you mean?  url):
+  
+app/controllers/shorts_controller.rb:22:in `show'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:30:06 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 4], ["updated_at", "2021-12-15 21:30:07.044328"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (131.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 151ms (Views: 0.3ms | ActiveRecord: 132.9ms | Allocations: 8089)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:30:11 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.5ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 5], ["updated_at", "2021-12-15 21:30:11.818773"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (166.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 176ms (Views: 0.2ms | ActiveRecord: 167.1ms | Allocations: 3670)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:30:46 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"shorts", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "shorts"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:31:07 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 6], ["updated_at", "2021-12-15 21:31:07.282218"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (52.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 63ms (Views: 0.4ms | ActiveRecord: 53.5ms | Allocations: 4038)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:32:35 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"shorts", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "shorts"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:60:in `set_short'
+Completed 404 Not Found in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:41:39 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:80:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:80:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 7], ["updated_at", "2021-12-15 21:41:39.705231"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (69.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 85ms (Views: 0.2ms | ActiveRecord: 70.5ms | Allocations: 7068)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:41:58 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 129)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:42:02 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:42:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.2ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:42:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:42:04 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 04:42:18 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stat/aasasa"):
+  
+Started GET "/stats/aasasa" for 127.0.0.1 at 2021-12-16 04:43:03 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stats/aasasa"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 04:43:03 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"slug"=>"favicon"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:80:in `set_short'
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:80:in `set_short'
+Completed 404 Not Found in 19ms (Views: 0.6ms | ActiveRecord: 1.2ms | Allocations: 2933)
+
+
+Started GET "/stats/aasasa" for 127.0.0.1 at 2021-12-16 04:45:14 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stats/aasasa"):
+  
+Started GET "/stats/aasasa" for 127.0.0.1 at 2021-12-16 04:45:15 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stats/aasasa"):
+  
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 04:45:19 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 128)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 04:45:41 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 128)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 04:45:43 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:46:50 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 128)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:49:04 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 129)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:49:10 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 8], ["updated_at", "2021-12-15 21:49:10.568575"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (84.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 111ms (Views: 0.2ms | ActiveRecord: 87.1ms | Allocations: 7824)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:49:23 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:01 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 129)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:04 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:04 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:05 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.2ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:05 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:05 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.2ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:06 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.2ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:51:07 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | Allocations: 94)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:52:21 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.4ms | Allocations: 128)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:52:25 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.4ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 9], ["updated_at", "2021-12-15 21:52:25.368266"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (79.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 98ms (Views: 0.2ms | ActiveRecord: 81.0ms | Allocations: 7202)
+
+
+Started GET "/aasasa/stats" for 127.0.0.1 at 2021-12-16 04:52:41 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/stats"):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:52:45 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 94)
+
+
+Started GET "/aasasa/stats" for 127.0.0.1 at 2021-12-16 04:52:54 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/stats"):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 04:53:59 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 10], ["updated_at", "2021-12-15 21:53:59.253418"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (143.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 164ms (Views: 0.3ms | ActiveRecord: 145.3ms | Allocations: 8151)
+
+
+Started GET "/aasasas" for 127.0.0.1 at 2021-12-16 04:54:03 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasas"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasas"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 497)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 04:54:10 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 94)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:54:58 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"shorts"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "shorts"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+Completed 404 Not Found in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 1926)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:55:28 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 1.1ms | Allocations: 4666)
+
+
+Started GET "/a1121" for 127.0.0.1 at 2021-12-16 04:55:47 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"a1121"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "a1121"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.4ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 1], ["updated_at", "2021-12-15 21:55:47.646331"], ["id", 3]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (76.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 89ms (Views: 0.6ms | ActiveRecord: 77.5ms | Allocations: 4184)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:55:54 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 920)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 04:56:50 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 1.8ms | Allocations: 4649)
+
+
+Started GET "/show/aasasa" for 127.0.0.1 at 2021-12-16 04:57:05 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/show/aasasa"):
+  
+Started GET "/show/aasasa" for 127.0.0.1 at 2021-12-16 04:57:43 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.8ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 11], ["updated_at", "2021-12-15 21:57:44.007876"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (80.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 100ms (Views: 0.3ms | ActiveRecord: 82.5ms | Allocations: 8111)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 04:57:50 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 94)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:00:31 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 0ms (Views: 0.2ms | Allocations: 128)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:01:18 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 404 Not Found in 1ms (Views: 0.2ms | Allocations: 124)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:01:42 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 2ms (Allocations: 624)
+
+
+  
+NoMethodError (undefined method `shorturl' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:36:in `stat'
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:02:27 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 2ms (Allocations: 627)
+
+
+  
+NoMethodError (undefined method `clicked' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:37:in `stat'
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:02:28 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+Completed 500 Internal Server Error in 1ms (Allocations: 598)
+
+
+  
+NoMethodError (undefined method `clicked' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:37:in `stat'
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:04:10 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 4411)
+
+
+Started GET "/stat/aasasa" for 127.0.0.1 at 2021-12-16 05:04:48 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 4330)
+
+
+Started GET "/stat/aasasaa" for 127.0.0.1 at 2021-12-16 05:04:51 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasaa"}
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms | Allocations: 991)
+
+
+  
+NoMethodError (undefined method `shorturl' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:37:in `stat'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 05:04:52 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/stat/aasasaa" for 127.0.0.1 at 2021-12-16 05:05:27 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasaa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 1914)
+
+
+Started GET "/stat/aasasaa" for 127.0.0.1 at 2021-12-16 05:05:43 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stat/aasasaa"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 05:05:43 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"slug"=>"favicon"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+Completed 404 Not Found in 8ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1922)
+
+
+Started GET "/stat/aasasaa" for 127.0.0.1 at 2021-12-16 05:05:44 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/stat/aasasaa"):
+  
+Started GET "/aasasaa" for 127.0.0.1 at 2021-12-16 05:05:53 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasaa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 497)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 05:05:56 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:77:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.8ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 12], ["updated_at", "2021-12-15 22:05:56.961140"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (71.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 90ms (Views: 0.3ms | ActiveRecord: 72.5ms | Allocations: 6433)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 05:06:03 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 548)
+
+
+Started GET "/aasasaa/stat" for 127.0.0.1 at 2021-12-16 05:06:07 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasaa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 489)
+
+
+Started GET "/aasasaa/stat" for 127.0.0.1 at 2021-12-16 07:14:26 +0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasaa"}
+  [1m[36mShort Load (12.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 23ms (Views: 0.3ms | ActiveRecord: 12.9ms | Allocations: 3579)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:14:30 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 3579)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:18:28 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 4388)
+
+
+Started GET "/aasasa/stat%20HTTP/1.1" for 127.0.0.1 at 2021-12-16 07:20:44 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/stat%20HTTP/1.1"):
+  
+Started GET "/aasasa/stat?HTTP/1.1" for 127.0.0.1 at 2021-12-16 07:20:52 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"HTTP/1.1"=>nil, "slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 682)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 07:21:16 +0700
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 996)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:21:33 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 583)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:21:35 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 564)
+
+
+Started GET "/aasas2a/stat" for 127.0.0.1 at 2021-12-16 07:25:57 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasas2a", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasas2a"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 495)
+
+
+Started GET "/aasas2'a/stat" for 127.0.0.1 at 2021-12-16 07:26:10 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasas2'a", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasas2'a"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 513)
+
+
+Started GET "/aasas2'a/stat" for 127.0.0.1 at 2021-12-16 07:26:11 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasas2'a", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasas2'a"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 494)
+
+
+Started GET "/aasas2'a/stat" for 127.0.0.1 at 2021-12-16 07:33:37 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasas2'a", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasas2'a"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 404 Not Found in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 722)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:33:42 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.5ms | Allocations: 4503)
+
+
+  
+NoMethodError (undefined method `header' for #<ShortsController:0x00000000008f98>
+Did you mean?  headers
+               head):
+  
+app/controllers/shorts_controller.rb:41:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:03 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.3ms | Allocations: 3100)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:25 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:43 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:49: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:44 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:45 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:46 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:47 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:48 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:34:52 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:35:23 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:44: syntax error, unexpected ',', expecting =>
+...ntent-Type: application/json'),
+...                              ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:46: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+         "Lastdate": @short.updated_at,
+                  ^~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:47: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+         "redirectCount": @short.clicked,
+                       ^~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:50: syntax error, unexpected '}', expecting '='
+     }, status: 200
+     ^
+):
+  
+app/controllers/shorts_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/shorts_controller.rb:46: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/shorts_controller.rb:47: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/shorts_controller.rb:50: syntax error, unexpected '}', expecting '='
+app/controllers/shorts_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/shorts_controller.rb:46: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/shorts_controller.rb:47: syntax error, unexpected tLABEL_END, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/shorts_controller.rb:50: syntax error, unexpected '}', expecting '='
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:35:24 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:35:26 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:37:26 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 4387)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:37:27 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 563)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:37:28 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 563)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:37:29 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 563)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:38:21 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 3083)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:38:22 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 568)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:38:24 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 568)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:40:48 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 3078)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:40:49 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 561)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:40:50 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 561)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:40:50 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 561)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:41:32 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.3ms | Allocations: 4295)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/shorts_controller.rb:41:in `format'
+app/controllers/shorts_controller.rb:41:in `stat'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 07:41:32 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"slug"=>"favicon"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:82:in `set_short'
+Completed 404 Not Found in 4ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 500)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:41:33 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 498)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/shorts_controller.rb:41:in `format'
+app/controllers/shorts_controller.rb:41:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:41:45 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 499)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/shorts_controller.rb:41:in `format'
+app/controllers/shorts_controller.rb:41:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:41 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+      header: @header
+      ^~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '}'
+     }, status: 200
+      ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:90: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '}'
+app/controllers/shorts_controller.rb:90: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '}'
+app/controllers/shorts_controller.rb:90: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:42 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:43 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:44 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:55 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+      header: @header,
+      ^~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:52:56 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:20 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+      header: @header,
+      ^~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+app/controllers/shorts_controller.rb:44: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:51: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:21 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:34 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:35 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:35 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:41 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:42 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:58 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+      header: @header,
+      ^~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:59 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:53:59 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:00 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:09 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3985)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:10 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:13 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:14 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:15 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:15 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:54:16 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:12 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+      headers:"aasa"
+      ^~~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:13 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:14 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:18 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:21 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:22 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:51 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+      headers:,
+      ^~~~~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:52 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:57:59 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 3117)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:58:33 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:aasas.com", "shorturl"=>"a1121", "slug"=>"aasasa", "short"=>{"url"=>"http:aasas.com", "shorturl"=>"a1121"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 564)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:58:38 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 564)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:58:39 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 07:59:24 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:52: syntax error, unexpected `end'
+    end     
+    ^~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:89: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/shorts_controller.rb:52: syntax error, unexpected `end'
+app/controllers/shorts_controller.rb:89: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/shorts_controller.rb:52: syntax error, unexpected `end'
+app/controllers/shorts_controller.rb:89: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:01:20 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 11ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 4389)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:01:21 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 574)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:26 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 14ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 4404)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:27 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 575)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:45 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+      render json: 
+             ^~~~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+     }, status: 200
+      ^
+):
+  
+app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/controllers/shorts_controller.rb:50: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:46 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:48 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:48 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:02:52 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:04 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:44: syntax error, unexpected `end'
+    end     
+    ^~~
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:81: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/shorts_controller.rb:44: syntax error, unexpected `end'
+app/controllers/shorts_controller.rb:81: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/shorts_controller.rb:44: syntax error, unexpected `end'
+app/controllers/shorts_controller.rb:81: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:05 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:13 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 4296)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:14 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:14 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:15 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:26 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 474)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:03:27 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 474)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:08 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 11ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 4337)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:09 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 543)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:22 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 10ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 4288)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:23 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:23 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:27 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 474)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:04:51 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+      render json: 
+             ^~~~~
+):
+  
+app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/controllers/shorts_controller.rb:42: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:13 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+      status: 200,
+      ^~~~~~~
+):
+  
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+app/controllers/shorts_controller.rb:43: syntax error, unexpected tLABEL
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:14 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:15 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:19 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:57 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:47: syntax error, unexpected ','
+     },, status: 200
+       ^
+):
+  
+app/controllers/shorts_controller.rb:47: syntax error, unexpected ','
+app/controllers/shorts_controller.rb:47: syntax error, unexpected ','
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:58 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:05:59 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:06:07 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 4381)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:23 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 4340)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:25 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:26 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:26 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:27 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:28 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:07:29 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 559)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:08:29 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 4278)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:09:29 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 4252)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:09:30 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 470)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:11:50 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 4346)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:11:52 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 565)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:11:53 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 565)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:13:30 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected '{', expecting `end'
+      render status: 200{"a": "asasa"}, content_type:"...
+                        ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected ':', expecting `end'
+      render status: 200{"a": "asasa"}, content_type:"appl...
+                            ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected '}', expecting `end'
+...ender status: 200{"a": "asasa"}, content_type:"application/j...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:42: syntax error, unexpected ',', expecting `end'
+...ontent_type:"application/json", json: 
+...                              ^
+):
+  
+app/controllers/shorts_controller.rb:42: syntax error, unexpected '{', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected ':', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected ',', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected '{', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected ':', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:42: syntax error, unexpected ',', expecting `end'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:17:39 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.3ms | Allocations: 4311)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/shorts_controller.rb:42:in `[]'
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:17:40 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 498)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/shorts_controller.rb:42:in `[]'
+app/controllers/shorts_controller.rb:42:in `stat'
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:18:54 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 9ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 4387)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:18:55 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 565)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:18:56 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 565)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:18:57 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 565)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:19:11 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 403 Forbidden in 17ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 4367)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:21:34 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 4350)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:22:38 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 4351)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:23:08 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 4389)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:23:10 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:34:in `stat'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 564)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:28:05 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:79:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (64.2ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 13], ["updated_at", "2021-12-16 01:28:05.302741"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (106.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 178ms (Views: 0.6ms | ActiveRecord: 170.9ms | Allocations: 4193)
+
+
+Started GET "/aasasaf" for 127.0.0.1 at 2021-12-16 08:28:12 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasaf"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasaf"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:79:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 497)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:30:12 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:76:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:76:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 14], ["updated_at", "2021-12-16 01:30:12.375198"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (84.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 103ms (Views: 0.2ms | ActiveRecord: 86.0ms | Allocations: 7451)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:30:51 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 4353)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:31:23 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.2ms | Allocations: 4357)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:31:46 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 575)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:31:47 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 575)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:32:35 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:38: syntax error, unexpected '{', expecting `end'
+      render status: 200{message: "200 OK"}, json: 
+                        ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:38: syntax error, unexpected '}', expecting `end'
+... status: 200{message: "200 OK"}, json: 
+...                              ^
+):
+  
+app/controllers/shorts_controller.rb:38: syntax error, unexpected '{', expecting `end'
+app/controllers/shorts_controller.rb:38: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:38: syntax error, unexpected '{', expecting `end'
+app/controllers/shorts_controller.rb:38: syntax error, unexpected '}', expecting `end'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 08:32:35 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-16 08:34:36 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:30:in `stat'
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 4382)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:34:39 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:75:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 15], ["updated_at", "2021-12-16 01:34:39.895492"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (66.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 76ms (Views: 0.2ms | ActiveRecord: 67.5ms | Allocations: 4010)
+
+
+Started GET "/aasasam" for 127.0.0.1 at 2021-12-16 08:34:43 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasam"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasam"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:75:in `set_short'
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 498)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:34:50 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:75:in `set_short'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 16], ["updated_at", "2021-12-16 01:34:50.070217"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (68.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 77ms (Views: 0.4ms | ActiveRecord: 69.0ms | Allocations: 4007)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:35:48 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:21: syntax error, unexpected ':', expecting =>
+      location : @Short.url
+               ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:22: syntax error, unexpected '}', expecting `end'
+    }, status: 200
+    ^
+):
+  
+app/controllers/shorts_controller.rb:21: syntax error, unexpected ':', expecting =>
+app/controllers/shorts_controller.rb:22: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:21: syntax error, unexpected ':', expecting =>
+app/controllers/shorts_controller.rb:22: syntax error, unexpected '}', expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:35:49 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:35:50 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:35:51 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:21 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+        location : @Short.url
+                 ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+      }
+      ^
+):
+  
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:22 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:31 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+        location: @Short.url
+                ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+      }
+      ^
+):
+  
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:45 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+        "location": @Short.url
+                  ^
+/home/mahesa/Rails/url-shortener/app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+      }
+      ^
+):
+  
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+app/controllers/shorts_controller.rb:22: syntax error, unexpected ':', expecting '}'
+app/controllers/shorts_controller.rb:23: syntax error, unexpected '}', expecting `end'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:46 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:47 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:53 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:36:56 +0700
+  
+ActionController::RoutingError (uninitialized constant ShortsController):
+  
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:37:24 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:78:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:78:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 17], ["updated_at", "2021-12-16 01:37:24.933254"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (75.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 77.3ms | Allocations: 7407)
+
+
+  
+NoMethodError (undefined method `url' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:22:in `show'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:37:26 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:78:in `set_short'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.9ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 18], ["updated_at", "2021-12-16 01:37:26.067827"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (61.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 62.3ms | Allocations: 4510)
+
+
+  
+NoMethodError (undefined method `url' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:22:in `show'
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-16 08:37:35 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"slug"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:78:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:78:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 19], ["updated_at", "2021-12-16 01:37:35.860052"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (68.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 86ms (Views: 0.3ms | ActiveRecord: 71.1ms | Allocations: 8214)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-16 08:43:36 +0700
+  
+ActionController::RoutingError (uninitialized constant ArticlesController
+Did you mean?  AbstractController):
+  
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 08:44:13 +0700
+Processing by ShortsController#index as */*
+Completed 500 Internal Server Error in 1ms (Allocations: 210)
+
+
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+    validates_uniqueness_of : shorturl
+                            ^
+):
+  
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/controllers/shorts_controller.rb:6:in `index'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 08:44:59 +0700
+Processing by ShortsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 204)
+
+
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+    validates_uniqueness_of : shorturl
+                            ^
+):
+  
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/controllers/shorts_controller.rb:6:in `index'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 08:44:59 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"slug"=>"favicon"}
+Completed 500 Internal Server Error in 5ms (Allocations: 1727)
+
+
+  
+NameError (uninitialized constant ShortsController::Short
+Did you mean?  TSort):
+  
+app/controllers/shorts_controller.rb:78:in `set_short'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 08:45:50 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 4413)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 08:46:43 +0700
+Processing by ShortsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 204)
+
+
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+    validates_uniqueness_of : slug
+                            ^
+):
+  
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/models/short.rb:4: syntax error, unexpected ':', expecting `end'
+app/controllers/shorts_controller.rb:6:in `index'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-16 08:46:43 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"slug"=>"favicon"}
+Completed 500 Internal Server Error in 4ms (Allocations: 1725)
+
+
+  
+NameError (uninitialized constant ShortsController::Short
+Did you mean?  TSort):
+  
+app/controllers/shorts_controller.rb:78:in `set_short'
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 08:47:25 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 8.2ms | ActiveRecord: 1.1ms | Allocations: 4924)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:48:14 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"asas", "short"=>{"url"=>"asas"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 100ms (Views: 93.0ms | ActiveRecord: 0.4ms | Allocations: 5344)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:50:25 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 2379)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:51:01 +0700
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "url":"http://abcsas.co.id/hhhm-asasa-sasa/"
+    "shorturl":"xcat21"
+}
+Processing by ShortsController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 114)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (783: unexpected token at '{
+    "url":"http://abcsas.co.id/hhhm-asasa-sasa/"
+    "shorturl":"xcat21"
+}'):
+  
+app/controllers/shorts_controller.rb:83:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:51:20 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "shorturl"=>"xcat21", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "shorturl"=>"xcat21"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "xcat21"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Create (15.9ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://abcsas.co.id/hhhm-asasa-sasa/"], ["shorturl", "xcat21"], ["created_at", "2021-12-16 01:51:20.969317"], ["updated_at", "2021-12-16 01:51:20.969317"]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (69.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 201 Created in 105ms (Views: 0.9ms | ActiveRecord: 86.6ms | Allocations: 4577)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:56:17 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "shorturl"=>"xcat21", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "shorturl"=>"xcat21"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "xcat21"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 2.1ms | ActiveRecord: 1.8ms | Allocations: 4745)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:56:30 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 2384)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:18 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 15ms (Views: 1.7ms | ActiveRecord: 2.7ms | Allocations: 4882)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:18 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 2378)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:19 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 2378)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:20 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasa/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 8ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 2377)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:27 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 7ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 2377)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 08:59:28 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mShort Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:54:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 2377)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."url" = ? AND "shorts"."shorturl" = ? ORDER BY "shorts"."id" ASC LIMIT ?[0m  [["url", "http:qqwqww.qs/ssdsd"], ["shorturl", "asasa"], ["LIMIT", 1]]
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:07:14 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms | Allocations: 4436)
+
+
+  
+NoMethodError (undefined method `self' for #<Short:0x00007f10a9044730>
+Did you mean?  itself):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:07:17 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2133)
+
+
+  
+NoMethodError (undefined method `self' for #<Short:0x00007f10a8e742c0>
+Did you mean?  itself):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:07:18 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2133)
+
+
+  
+NoMethodError (undefined method `self' for #<Short:0x00007f10a8d869a8>
+Did you mean?  itself):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:07:51 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.1ms | Allocations: 4607)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Short:0x0000564f054e9760>
+Did you mean?  shorturl):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:07:52 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2247)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Short:0x0000564f044ec8f8>
+Did you mean?  shorturl):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:19:54 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 2418)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/models/short.rb:9:in `shorten'
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:02 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.8ms | Allocations: 1965)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x000000000497f0>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:03 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1934)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x00000000049868>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:04 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1934)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x000000000498e0>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:05 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1934)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x00000000049958>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:06 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1934)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x00000000049a70>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:22:07 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1934)
+
+
+  
+NameError (undefined local variable or method `regexp' for #<ShortsController:0x00000000049b10>):
+  
+app/controllers/shorts_controller.rb:84:in `short_params'
+app/controllers/shorts_controller.rb:52:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:06 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 16ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 4932)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:25 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 2378)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:26 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 2378)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:28 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 2377)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:29 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 11ms (Views: 2.6ms | ActiveRecord: 1.3ms | Allocations: 2377)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:24:29 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 2377)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:25:29 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 16ms (Views: 2.1ms | ActiveRecord: 2.3ms | Allocations: 4796)
+
+
+Started GET "/shorts" for 127.0.0.1 at 2021-12-16 09:25:57 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1072)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:27:43 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 2273)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:27:43 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 2272)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:28:12 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "shorturl"=>"asfsd12", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "shorturl"=>"asfsd12"}}
+[31mUnpermitted parameter: :shorturl[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 2300)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:28:13 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "shorturl"=>"asfsd12", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "shorturl"=>"asfsd12"}}
+[31mUnpermitted parameter: :shorturl[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 2298)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:31:59 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123mas"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://abcsas.co.id/hhhm-asasa-sasassds/"], ["shorturl", "123mas"], ["created_at", "2021-12-16 02:31:59.207808"], ["updated_at", "2021-12-16 02:31:59.207808"]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (67.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 201 Created in 86ms (Views: 0.7ms | ActiveRecord: 69.8ms | Allocations: 7300)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:36:13 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.9ms | Allocations: 5544)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Class:0x00007f10a8dd8028>):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:40:15 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.8ms | Allocations: 4383)
+
+
+  
+NameError (undefined local variable or method `url' for #<ShortsController:0x0000000004ecf0>
+Did you mean?  URI):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:40:16 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2047)
+
+
+  
+NameError (undefined local variable or method `url' for #<ShortsController:0x0000000004ee08>
+Did you mean?  URI):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:40:53 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.8ms | Allocations: 5580)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Class:0x00007f109417b2a8>):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:40:55 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3212)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Class:0x00007f109417b2a8>):
+  
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:41:45 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "asa567"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mShort Create (11.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://123abcsas.co.id/hhhm-asasa-sasassds/"], ["shorturl", "asa567"], ["created_at", "2021-12-16 02:41:45.655988"], ["updated_at", "2021-12-16 02:41:45.655988"]]
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+  [1m[36mTRANSACTION (63.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:55:in `create'
+Completed 201 Created in 93ms (Views: 0.8ms | ActiveRecord: 76.3ms | Allocations: 7402)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:42:35 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/", "short"=>{"url"=>"http://123abcsas.co.id/hhhm-asasa-sasassds/"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms | Allocations: 2501)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/models/short.rb:9:in `shorten'
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:44:28 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://rrrrt.co.id/hvvvv/", "short"=>{"url"=>"http://rrrrt.co.id/hvvvv/"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 167)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/models/short.rb:9:in `shorten'
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:49:04 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://rrrrt.co.id/hvvvv/", "short"=>{"url"=>"http://rrrrt.co.id/hvvvv/"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 2418)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/models/short.rb:9:in `shorten'
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:50:03 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://rrrrt.co.id/hvvvv/", "short"=>{"url"=>"http://rrrrt.co.id/hvvvv/"}}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."url" = ? AND "shorts"."shorturl" IS NULL ORDER BY "shorts"."id" ASC LIMIT ?[0m  [["url", "http://rrrrt.co.id/hvvvv/"], ["LIMIT", 1]]
+  ↳ app/models/short.rb:10:in `shorten'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.0ms | Allocations: 3646)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/models/short.rb:13:in `shorten'
+app/controllers/shorts_controller.rb:53:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:54:51 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://rrrrt.co.id/hvvvv/", "short"=>{"url"=>"http://rrrrt.co.id/hvvvv/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123zxc"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://rrrrt.co.id/hvvvv/"], ["shorturl", "123zxc"], ["created_at", "2021-12-16 02:54:51.629602"], ["updated_at", "2021-12-16 02:54:51.629602"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (75.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 94ms (Views: 2.0ms | ActiveRecord: 77.5ms | Allocations: 7415)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 09:55:22 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://rrrrt.co.id/hvvvv/", "shorturl"=>"mbvc13", "short"=>{"url"=>"http://rrrrt.co.id/hvvvv/", "shorturl"=>"mbvc13"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "mbvc13"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.6ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://rrrrt.co.id/hvvvv/"], ["shorturl", "mbvc13"], ["created_at", "2021-12-16 02:55:22.387536"], ["updated_at", "2021-12-16 02:55:22.387536"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (138.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 149ms (Views: 0.7ms | ActiveRecord: 139.7ms | Allocations: 4668)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:00:34 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "http://tes\\.co\\.id/hvvvv/"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://tes.co.id/hvvvv/"], ["shorturl", "http://tes\\.co\\.id/hvvvv/"], ["created_at", "2021-12-16 03:00:35.071360"], ["updated_at", "2021-12-16 03:00:35.071360"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (131.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 149ms (Views: 0.7ms | ActiveRecord: 132.8ms | Allocations: 7060)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:07:23 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.5ms | Allocations: 5422)
+
+
+  
+NoMethodError (undefined method `shorten' for #<Class:0x00007f10b8027450>):
+  
+app/controllers/shorts_controller.rb:54:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:08:10 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mShort Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."token" = ? LIMIT ?[0m  [["token", "MSvzyWLtwjN2wY3RARSlgg"], ["LIMIT", 1]]
+  ↳ app/models/short.rb:12:in `block in shorten'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 3.7ms | Allocations: 3070)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: shorts.token):
+  
+app/models/short.rb:12:in `block in shorten'
+app/models/short.rb:10:in `loop'
+app/models/short.rb:10:in `shorten'
+app/controllers/shorts_controller.rb:54:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:08:11 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mShort Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."token" = ? LIMIT ?[0m  [["token", "f5lHYgmY7_tCWKxryUVXTA"], ["LIMIT", 1]]
+  ↳ app/models/short.rb:12:in `block in shorten'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.1ms | Allocations: 669)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: shorts.token):
+  
+app/models/short.rb:12:in `block in shorten'
+app/models/short.rb:10:in `loop'
+app/models/short.rb:10:in `shorten'
+app/controllers/shorts_controller.rb:54:in `create'
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:10:37 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "53223003"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://tes.co.id/hvvvv/"], ["shorturl", "53223003"], ["created_at", "2021-12-16 03:10:37.718544"], ["updated_at", "2021-12-16 03:10:37.718544"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (61.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 83ms (Views: 1.0ms | ActiveRecord: 63.1ms | Allocations: 6681)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:11:56 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "9b28bc1430fb"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://tes.co.id/hvvvv/"], ["shorturl", "9b28bc1430fb"], ["created_at", "2021-12-16 03:11:56.627704"], ["updated_at", "2021-12-16 03:11:56.627704"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (65.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 82ms (Views: 1.3ms | ActiveRecord: 67.0ms | Allocations: 6700)
+
+
+Started POST "/shorts" for 127.0.0.1 at 2021-12-16 10:12:22 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://tes.co.id/hvvvv/", "short"=>{"url"=>"http://tes.co.id/hvvvv/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "c4d0a8"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://tes.co.id/hvvvv/"], ["shorturl", "c4d0a8"], ["created_at", "2021-12-16 03:12:22.088333"], ["updated_at", "2021-12-16 03:12:22.088333"]]
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+  [1m[36mTRANSACTION (74.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:59:in `create'
+Completed 201 Created in 93ms (Views: 0.7ms | ActiveRecord: 76.3ms | Allocations: 7280)
+
+

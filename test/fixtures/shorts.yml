@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  string: MyString
+  shorturl: MyString
+  string: MyString
+  clicked: MyString
+  int: MyString
+
+two:
+  url: MyString
+  string: MyString
+  shorturl: MyString
+  string: MyString
+  clicked: MyString
+  int: MyString
