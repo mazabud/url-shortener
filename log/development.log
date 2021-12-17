@@ -9169,3 +9169,713 @@ Processing by ShortsController#stat as HTML
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 560)
 
 
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:23:11 +0700
+  [1m[35m (21.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected backslash
+...s_format_of :shortcode, with: \A[A-Z][a-zA-Z0-9\s]*\z, on: :...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+...tcode, with: \A[A-Z][a-zA-Z0-9\s]*\z, on: :create, message: ...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+...ng regexp: ^[0-9a-zA-Z_]{6}$.", status: 422 
+...                              ^
+):
+  
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:24:05 +0700
+  
+ArgumentError (The provided regular expression is using multiline anchors (^ or $), which may present a security risk. Did you mean to use \A and \z, or forgot to add the :multiline => true option?):
+  
+app/models/short.rb:7:in `<class:Short>'
+app/models/short.rb:2:in `<main>'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:24:34 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (15.1ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "29e5fd"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 81ms (Views: 0.2ms | ActiveRecord: 16.6ms | Allocations: 7397)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:26:07 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected '^'
+...s_format_of :shortcode, with: ^[0-9a-zA-Z_]{6}$, on: :create...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+...mat_of :shortcode, with: ^[0-9a-zA-Z_]{6}$, on: :create, mes...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+...:shortcode, with: ^[0-9a-zA-Z_]{6}$, on: :create, message: "...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+...ng regexp: ^[0-9a-zA-Z_]{6}$.", status: 422 
+...                              ^
+):
+  
+app/models/short.rb:7: syntax error, unexpected '^'
+app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected '^'
+app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:32:17 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected backslash
+...s_format_of :shortcode, with: \[0-9a-zA-Z_]\s\d{6}, on: :cre...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+...mat_of :shortcode, with: \[0-9a-zA-Z_]\s\d{6}, on: :create, ...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+...:shortcode, with: \[0-9a-zA-Z_]\s\d{6}, on: :create, message...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+...de, with: \[0-9a-zA-Z_]\s\d{6}, on: :create, message: "The s...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+...ng regexp: ^[0-9a-zA-Z_]{6}$.", status: 422 
+...                              ^
+):
+  
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected local variable or method, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ']', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:33:37 +0700
+  
+SyntaxError (/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected backslash
+...s_format_of :shortcode, with: \A[A-Z][a-zA-Z0-9\s]*\z, on: :...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+...tcode, with: \A[A-Z][a-zA-Z0-9\s]*\z, on: :create, message: ...
+...                              ^
+/home/mahesa/Rails/url-shortener/app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+...ng regexp: ^[0-9a-zA-Z_]{6}$.", status: 422 
+...                              ^
+):
+  
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+app/models/short.rb:7: syntax error, unexpected backslash
+app/models/short.rb:7: syntax error, unexpected backslash, expecting ']'
+app/models/short.rb:7: syntax error, unexpected ',', expecting `end'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:34:00 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "cc4eee"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:34:00.630378"], ["updated_at", "2021-12-17 09:34:00.630378"], ["shortcode", "cc4eee"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (64.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 81ms (Views: 0.7ms | ActiveRecord: 66.0ms | Allocations: 6797)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:40:38 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "c6f7fc"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 11ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 4263)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:40:40 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "b58764"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1944)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:41:04 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1212", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1212"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asa1212"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1959)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:41:15 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa12@12.co", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa12@12.co"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asa12@12.co"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.6ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:41:15.098147"], ["updated_at", "2021-12-17 09:41:15.098147"], ["shortcode", "asa12@12.co"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (68.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 81ms (Views: 0.9ms | ActiveRecord: 69.8ms | Allocations: 4795)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:43:03 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asao", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asao"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asao"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 11ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 4388)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:43:13 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1o", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1o"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asa1o"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1944)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:43:17 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1o2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa1o2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asa1o2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:43:17.744578"], ["updated_at", "2021-12-17 09:43:17.744578"], ["shortcode", "asa1o2"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (63.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 73ms (Views: 0.6ms | ActiveRecord: 64.4ms | Allocations: 4204)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:43:34 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa/o2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asa/o2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asa/o2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:43:43 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"as3", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"as3"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "as3"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:44:22 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:44:22.244316"], ["updated_at", "2021-12-17 09:44:22.244316"], ["shortcode", "asaaaa"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (64.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 83ms (Views: 0.5ms | ActiveRecord: 65.7ms | Allocations: 7647)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:44:28 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa23", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa23"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa23"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:44:29.000521"], ["updated_at", "2021-12-17 09:44:29.000521"], ["shortcode", "asaaaa23"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (61.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 75ms (Views: 0.5ms | ActiveRecord: 62.6ms | Allocations: 4741)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:44:50 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa23", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa23"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa23"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 409 Conflict in 14ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 4368)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:44:56 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2-a3"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:44:56.508326"], ["updated_at", "2021-12-17 09:44:56.508326"], ["shortcode", "asaaaa2-a3"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (52.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 63ms (Views: 0.7ms | ActiveRecord: 52.7ms | Allocations: 4799)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:45:01 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3sqwqwwqwqwq", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3sqwqwwqwqwq"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2-a3sqwqwwqwqwq"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:45:01.192940"], ["updated_at", "2021-12-17 09:45:01.192940"], ["shortcode", "asaaaa2-a3sqwqwwqwqwq"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (49.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 58ms (Views: 0.5ms | ActiveRecord: 50.3ms | Allocations: 4145)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:45:08 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3sqwqwwqwqwqassasasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3sqwqwwqwqwqassasasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2-a3sqwqwwqwqwqassasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:45:08.280829"], ["updated_at", "2021-12-17 09:45:08.280829"], ["shortcode", "asaaaa2-a3sqwqwwqwqwqassasasa"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (72.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 84ms (Views: 0.3ms | ActiveRecord: 73.0ms | Allocations: 4745)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:45:27 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3122asasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3122asasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2-a3122asasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 13ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4388)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:45:43 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3122asasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2-a3122asasa"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2-a3122asasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 14ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 4369)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:45:59 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaaa2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaaa2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1940)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:46:04 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaa2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaa2"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaa2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:46:12 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaa2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaa2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaa2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1940)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:46:21 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:46:47 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 4369)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:46:48 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 8ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 1940)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:05 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:47:05.915864"], ["updated_at", "2021-12-17 09:47:05.915864"], ["shortcode", "asaaqq2"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (73.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 93ms (Views: 0.5ms | ActiveRecord: 75.1ms | Allocations: 7514)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:11 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2-asasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2-asasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2-asasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (1.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:47:11.650690"], ["updated_at", "2021-12-17 09:47:11.650690"], ["shortcode", "asaaqq2-asasa"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (76.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 97ms (Views: 0.4ms | ActiveRecord: 78.5ms | Allocations: 4742)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:22 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2-asasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaqq2-asasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaqq2-asasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 409 Conflict in 11ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4407)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:28 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"asaaasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "asaaasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1940)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:37 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123aaasa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123aaasa"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123aaasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:42 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123aaa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123aaa"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123aaa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.6ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:47:42.196390"], ["updated_at", "2021-12-17 09:47:42.196390"], ["shortcode", "123aaa"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (64.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 80ms (Views: 0.6ms | ActiveRecord: 65.8ms | Allocations: 4795)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:48 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-aa", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-aa"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123-aa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:47:48.801410"], ["updated_at", "2021-12-17 09:47:48.801410"], ["shortcode", "123-aa"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (75.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 87ms (Views: 0.9ms | ActiveRecord: 76.5ms | Allocations: 4740)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:47:54 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-a/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-a/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123-a/"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1940)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:49:06 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-av", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123-av"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123-av"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 14ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 4368)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:49:11 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123bav", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123bav"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123bav"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:49:11.464624"], ["updated_at", "2021-12-17 09:49:11.464624"], ["shortcode", "123bav"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (52.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 62ms (Views: 0.9ms | ActiveRecord: 52.7ms | Allocations: 4796)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 16:49:18 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123bAv", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"123bAv"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123bAv"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.7ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 09:49:18.010974"], ["updated_at", "2021-12-17 09:49:18.010974"], ["shortcode", "123bAv"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (73.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 87ms (Views: 0.4ms | ActiveRecord: 74.7ms | Allocations: 4744)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 16:49:57 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 2372)
+
+
+Started GET "/123bAv" for 127.0.0.1 at 2021-12-17 16:50:23 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"123bAv"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123bAv"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.5ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ?, "redirectcount" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2021-12-17 09:50:23.110199"], ["redirectcount", 1], ["id", 15]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (193.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 204ms (Views: 0.2ms | ActiveRecord: 194.5ms | Allocations: 4641)
+
+
+Started GET "/123bAv/stat" for 127.0.0.1 at 2021-12-17 16:50:30 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"shortcode"=>"123bAv"}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123bAv"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 559)
+
+
+Started GET "/123bav/stat" for 127.0.0.1 at 2021-12-17 16:50:35 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"shortcode"=>"123bav"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "123bav"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 559)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 16:51:38 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 2311)
+
+
+Started DELETE "/shorten/delete" for 127.0.0.1 at 2021-12-17 16:52:08 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"shorten", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"shorten"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "shorten"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.8ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" BETWEEN ? AND ?[0m  [["id", 3], ["id", 55]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (73.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (64.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (60.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (72.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (60.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (71.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.9ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (67.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.6ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (57.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 955ms (Views: 0.1ms | ActiveRecord: 852.4ms | Allocations: 50929)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 16:52:12 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 815)
+
+
