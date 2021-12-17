@@ -403,7 +403,7 @@ ActionController::RoutingError (No route matches [GET] "/aasasa"):
 Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:18:42 +0700
   
 SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
-... "/:slug", to: "shorts#show" as: :short
+... "/:shortcode", to: "shorts#show" as: :short
 ...                             ^~
 ):
   
@@ -424,7 +424,7 @@ ActionController::RoutingError (No route matches [GET] "/aasasa"):
 Started GET "/aasasa" for 127.0.0.1 at 2021-12-15 21:20:04 +0700
   
 SyntaxError (/home/mahesa/Rails/url-shortener/config/routes.rb:3: syntax error, unexpected local variable or method, expecting `end'
-... "/:slug", to: "shorts#show" as: :short
+... "/:shortcode", to: "shorts#show" as: :short
 ...                             ^~
 ):
   
@@ -6851,5 +6851,2321 @@ Processing by ShortsController#create as */*
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
   ↳ app/controllers/shorts_controller.rb:62:in `create'
 Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1938)
+
+
+Started GET "/aasasa" for 127.0.0.1 at 2021-12-17 13:46:59 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#show as */*
+  Parameters: {"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/", "shortcode"=>"aasasa", "short"=>{"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.7ms)[0m  [1m[33mUPDATE "shorts" SET "clicked" = ?, "updated_at" = ? WHERE "shorts"."id" = ?[0m  [["clicked", 21], ["updated_at", "2021-12-17 06:47:00.303832"], ["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (78.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 94ms (Views: 0.5ms | ActiveRecord: 79.5ms | Allocations: 6696)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-17 13:47:08 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/", "shortcode"=>"aasasa", "short"=>{"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 566)
+
+
+Started DELETE "/shorts/1" for 127.0.0.1 at 2021-12-17 13:48:35 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/", "id"=>"1", "short"=>{"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/"}}
+  [1m[36mShort Load (0.8ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.7ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 99ms (ActiveRecord: 84.0ms | Allocations: 4119)
+
+
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:48:40 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/", "id"=>"2", "short"=>{"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms | Allocations: 1128)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/3" for 127.0.0.1 at 2021-12-17 13:48:48 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/", "id"=>"3", "short"=>{"url"=>"http:/124.co/4456", "shorturl"=>"asas1313-as/"}}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 1125)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/3" for 127.0.0.1 at 2021-12-17 13:48:53 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms | Allocations: 1125)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/4" for 127.0.0.1 at 2021-12-17 13:48:57 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 1125)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started GET "/" for 127.0.0.1 at 2021-12-17 13:49:06 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.3ms | Allocations: 5518)
+
+
+Started DELETE "/shorts/4" for 127.0.0.1 at 2021-12-17 13:49:13 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1126)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:00 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:92:in `set_short'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1125)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:54 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 14ms (ActiveRecord: 1.7ms | Allocations: 2058)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:55 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.1ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:55 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.2ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:57 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.3ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:50:57 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.5ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/short/2" for 127.0.0.1 at 2021-12-17 13:51:09 +0700
+  
+ActionController::RoutingError (No route matches [DELETE] "/short/2"):
+  
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:52:18 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.1ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/2" for 127.0.0.1 at 2021-12-17 13:52:19 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.2ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/shorts/aasasa" for 127.0.0.1 at 2021-12-17 13:55:34 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"id"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.2ms | Allocations: 649)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  controller
+               action
+               id):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 13:56:47 +0700
+  
+ActionController::RoutingError (No route matches [DELETE] "/aasasa/delete"):
+  
+Started DELETE "/aasasa/stat" for 127.0.0.1 at 2021-12-17 13:56:58 +0700
+  
+ActionController::RoutingError (No route matches [DELETE] "/aasasa/stat"):
+  
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-17 13:57:01 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 4463)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-17 13:57:08 +0700
+Processing by ShortsController#stat as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 564)
+
+
+Started GET "/aasasa/delete" for 127.0.0.1 at 2021-12-17 13:57:16 +0700
+  
+AbstractController::ActionNotFound (The action 'delete' could not be found for ShortsController
+Did you mean?  destroy
+               index
+               create
+               update):
+  
+actionpack (6.1.4.3) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.4.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.4.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.4.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.4.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.4.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/aasasa/destroy" for 127.0.0.1 at 2021-12-17 13:57:51 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/destroy"):
+  
+Started GET "/" for 127.0.0.1 at 2021-12-17 13:58:07 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 1.4ms | Allocations: 9300)
+
+
+Started GET "/aasasa/stat" for 127.0.0.1 at 2021-12-17 13:58:24 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 708)
+
+
+Started GET "/aasasa/delete" for 127.0.0.1 at 2021-12-17 13:58:30 +0700
+Processing by ShortsController#destroy as HTML
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.2ms | Allocations: 532)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shortcode
+               controller
+               action):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-17 13:58:30 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"shortcode"=>"favicon"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 494)
+
+
+Started GET "/aasasa/delete" for 127.0.0.1 at 2021-12-17 13:59:11 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 13ms (ActiveRecord: 2.3ms | Allocations: 4425)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shortcode
+               controller
+               action):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started GET "/aasasa/stats" for 127.0.0.1 at 2021-12-17 13:59:22 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/stats"):
+  
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 13:59:58 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 400 Bad Request in 13ms (ActiveRecord: 1.9ms | Allocations: 4405)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: short
+Did you mean?  shortcode
+               controller
+               action):
+  
+app/controllers/shorts_controller.rb:98:in `short_params'
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 14:01:54 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 200 OK in 13ms (Views: 1.0ms | ActiveRecord: 1.0ms | Allocations: 4818)
+
+
+Started GET "/aasasa/delete" for 127.0.0.1 at 2021-12-17 14:02:05 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/aasasa/delete"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-17 14:02:05 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"shortcode"=>"favicon"}
+  [1m[36mShort Load (0.7ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 404 Not Found in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 494)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:02:11 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.3ms | Allocations: 5519)
+
+
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 14:02:22 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 957)
+
+
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 14:04:33 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.7ms | Allocations: 6537)
+
+
+  
+NoMethodError (undefined method `destroy_by_shorturl' for #<Short:0x00007f527c0b2b58>
+Did you mean?  destroyed_by_association):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/aasasa/delete" for 127.0.0.1 at 2021-12-17 14:07:55 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aasasa"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aasasa"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (83.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 200 OK in 104ms (Views: 0.5ms | ActiveRecord: 84.7ms | Allocations: 8606)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:08:03 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.4ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 13.6ms | ActiveRecord: 0.4ms | Allocations: 5405)
+
+
+Started DELETE "/3/delete" for 127.0.0.1 at 2021-12-17 14:11:47 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "3"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.9ms | Allocations: 3069)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/3/delete" for 127.0.0.1 at 2021-12-17 14:12:24 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "3"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.5ms | Allocations: 2194)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short without an ID):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/4/delete" for 127.0.0.1 at 2021-12-17 14:12:30 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"4"}
+  [1m[36mShort Load (0.5ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "4"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms | Allocations: 525)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Short without an ID):
+  
+app/controllers/shorts_controller.rb:86:in `destroy'
+Started DELETE "/xcat21/delete" for 127.0.0.1 at 2021-12-17 14:12:59 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"xcat21"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "xcat21"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:95:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "xcat21"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (97.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 118ms (Views: 0.3ms | ActiveRecord: 99.4ms | Allocations: 8557)
+
+
+Started DELETE "/123mas/delete" for 127.0.0.1 at 2021-12-17 14:13:42 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"123mas"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123mas"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123mas"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.5ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (85.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 107ms (Views: 0.1ms | ActiveRecord: 87.3ms | Allocations: 8491)
+
+
+Started DELETE "/asa567/delete" for 127.0.0.1 at 2021-12-17 14:14:01 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"asa567"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "asa567"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "asa567"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (79.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 90ms (Views: 0.2ms | ActiveRecord: 80.0ms | Allocations: 4346)
+
+
+Started DELETE "/123zxc/delete" for 127.0.0.1 at 2021-12-17 14:14:28 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"123zxc"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123zxc"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "123zxc"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.7ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (776.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 786ms (Views: 0.1ms | ActiveRecord: 777.1ms | Allocations: 4493)
+
+
+Started DELETE "/mbvc13/delete" for 127.0.0.1 at 2021-12-17 14:14:47 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"mbvc13"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "mbvc13"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "mbvc13"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.7ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (69.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 81ms (Views: 0.1ms | ActiveRecord: 70.8ms | Allocations: 4347)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:14:52 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 4835)
+
+
+Started DELETE "/9b28bc1430fb/delete" for 127.0.0.1 at 2021-12-17 14:15:02 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"9b28bc1430fb"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "9b28bc1430fb"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "9b28bc1430fb"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (215.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 224ms (Views: 0.1ms | ActiveRecord: 215.6ms | Allocations: 4493)
+
+
+Started DELETE "/c4d0a8/delete" for 127.0.0.1 at 2021-12-17 14:15:21 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"c4d0a8"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "c4d0a8"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "c4d0a8"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (76.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 85ms (Views: 0.2ms | ActiveRecord: 76.7ms | Allocations: 4346)
+
+
+Started DELETE "/aa2173/delete" for 127.0.0.1 at 2021-12-17 14:15:36 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"aa2173"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aa2173"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "aa2173"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (180.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 189ms (Views: 0.1ms | ActiveRecord: 180.7ms | Allocations: 4493)
+
+
+Started DELETE "/245483/delete" for 127.0.0.1 at 2021-12-17 14:15:50 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"245483"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "245483"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "245483"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.5ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (73.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 81ms (Views: 0.1ms | ActiveRecord: 74.0ms | Allocations: 3385)
+
+
+Started DELETE "/b58f46/delete" for 127.0.0.1 at 2021-12-17 14:16:06 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"b58f46"}
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "b58f46"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "b58f46"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (67.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 76ms (Views: 0.1ms | ActiveRecord: 67.7ms | Allocations: 4346)
+
+
+Started DELETE "/ddc8b1/delete" for 127.0.0.1 at 2021-12-17 14:16:19 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"ddc8b1"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "ddc8b1"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mCACHE Short Load (0.0ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "ddc8b1"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.8ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (75.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 86ms (Views: 0.4ms | ActiveRecord: 76.7ms | Allocations: 4347)
+
+
+Started DELETE "/ddc8b1/delete" for 127.0.0.1 at 2021-12-17 14:18:35 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"ddc8b1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "ddc8b1"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" BETWEEN ? AND ?[0m  [["id", 15], ["id", 32]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.8ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (72.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (70.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (1.0ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (70.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (83.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.5ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (71.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 23]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (60.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 24]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 25]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (81.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 26]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (81.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 27]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (61.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 28]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 29]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.9ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 30]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (80.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.2ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 31]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (82.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 32]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 1305ms (Views: 0.1ms | ActiveRecord: 1192.5ms | Allocations: 66362)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:18:41 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 2322)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:18:43 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 6.1ms | ActiveRecord: 0.1ms | Allocations: 2301)
+
+
+Started DELETE "/ddc8b1/delete" for 127.0.0.1 at 2021-12-17 14:19:03 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"ddc8b1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "ddc8b1"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" BETWEEN ? AND ?[0m  [["id", 35], ["id", 45]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 35]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (88.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 36]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (71.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 37]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 38]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (71.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.7ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 39]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (72.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.2ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 40]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (72.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 41]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (60.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 42]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 43]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 44]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (57.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 751ms (Views: 0.5ms | ActiveRecord: 675.7ms | Allocations: 43193)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:19:07 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.2ms | Allocations: 1181)
+
+
+Started DELETE "/ddc8b1/delete" for 127.0.0.1 at 2021-12-17 14:19:28 +0700
+Processing by ShortsController#destroy as */*
+  Parameters: {"shortcode"=>"ddc8b1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "ddc8b1"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" BETWEEN ? AND ?[0m  [["id", 3], ["id", 45]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.5ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (62.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.7ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (59.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (49.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 33]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (60.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 34]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (50.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 325ms (Views: 0.2ms | ActiveRecord: 285.7ms | Allocations: 24122)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:19:31 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 601)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:20:18 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"", "short"=>{"url"=>""}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "495500"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 400 Bad Request in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2016)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:20:22 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 584)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:21:40 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "short"=>{"url"=>"http://maze.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "9bfe87"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://maze.com/tentang-kami/"], ["shorturl", "9bfe87"], ["created_at", "2021-12-17 07:21:40.777661"], ["updated_at", "2021-12-17 07:21:40.777661"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (60.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 71ms (Views: 0.7ms | ActiveRecord: 61.1ms | Allocations: 4800)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:21:47 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 702)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:22:57 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221ddsddfdg", "short"=>{"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221ddsddfdg"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "11221ddsddfdg"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (1.1ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://maze.com/tentang-kami/"], ["shorturl", "11221ddsddfdg"], ["created_at", "2021-12-17 07:22:57.049500"], ["updated_at", "2021-12-17 07:22:57.049500"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (62.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 83ms (Views: 0.4ms | ActiveRecord: 64.2ms | Allocations: 4741)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:23:35 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsddfdg", "short"=>{"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsddfdg"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "11221d-dsddfdg"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.5ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://maze.com/tentang-kami/"], ["shorturl", "11221d-dsddfdg"], ["created_at", "2021-12-17 07:23:35.865692"], ["updated_at", "2021-12-17 07:23:35.865692"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (44.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 59ms (Views: 0.4ms | ActiveRecord: 45.6ms | Allocations: 4740)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:23:41 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsd'dfdg", "short"=>{"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsd'dfdg"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "11221d-dsd'dfdg"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "shorturl", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "http://maze.com/tentang-kami/"], ["shorturl", "11221d-dsd'dfdg"], ["created_at", "2021-12-17 07:23:41.345842"], ["updated_at", "2021-12-17 07:23:41.345842"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (48.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 62ms (Views: 1.2ms | ActiveRecord: 48.9ms | Allocations: 4741)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:23:51 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsd'dfdg/", "short"=>{"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221d-dsd'dfdg/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "11221d-dsd'dfdg/"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1939)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:24:30 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221ddsddfdg", "short"=>{"url"=>"http://maze.com/tentang-kami/", "shorturl"=>"11221ddsddfdg"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shorturl" = ? LIMIT ?[0m  [["shorturl", "11221ddsddfdg"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 409 Conflict in 6ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1939)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:29:13 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:65:in `execute_if_updated'
+activerecord (6.1.4.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:29:14 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/rails/actions" for 127.0.0.1 at 2021-12-17 14:32:06 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePart (20211217072701)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "shorturl" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","shorturl","clicked","created_at","updated_at")
+                     SELECT "id","url","shorturl","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","created_at","updated_at")
+                     SELECT "id","url","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" integer DEFAULT 0[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  
+StandardError (An error has occurred, this and all later migrations canceled:
+
+SQLite3::SQLException: duplicate column name: shortcode):
+  
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `initialize'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `new'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `prepare'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:193:in `execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:31:in `block (2 levels) in execute'
+activesupport (6.1.4.3) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.1.4.3) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.1.4.3) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:30:in `block in execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:696:in `block (2 levels) in log'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:695:in `block in log'
+activesupport (6.1.4.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:687:in `log'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:29:in `execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/schema_statements.rb:611:in `add_column'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3_adapter.rb:241:in `add_column'
+activerecord (6.1.4.3) lib/active_record/migration.rb:929:in `block in method_missing'
+activerecord (6.1.4.3) lib/active_record/migration.rb:897:in `block in say_with_time'
+/usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+activerecord (6.1.4.3) lib/active_record/migration.rb:897:in `say_with_time'
+activerecord (6.1.4.3) lib/active_record/migration.rb:918:in `method_missing'
+db/migrate/20211217072701_remove_part.rb:6:in `change'
+activerecord (6.1.4.3) lib/active_record/migration.rb:867:in `exec_migration'
+activerecord (6.1.4.3) lib/active_record/migration.rb:851:in `block (2 levels) in migrate'
+/usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+activerecord (6.1.4.3) lib/active_record/migration.rb:850:in `block in migrate'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:462:in `with_connection'
+activerecord (6.1.4.3) lib/active_record/migration.rb:849:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1037:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1329:in `block in execute_migration_in_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1380:in `block in ddl_transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/database_statements.rb:320:in `block in transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/database_statements.rb:320:in `transaction'
+activerecord (6.1.4.3) lib/active_record/transactions.rb:209:in `transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1380:in `ddl_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1328:in `execute_migration_in_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1302:in `each'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1302:in `migrate_without_lock'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1253:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1086:in `up'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1061:in `migrate'
+activerecord (6.1.4.3) lib/active_record/tasks/database_tasks.rb:237:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:137:in `block in <class:PendingMigrationError>'
+activesupport (6.1.4.3) lib/active_support/actionable_error.rb:28:in `dispatch'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:20:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-17 14:32:07 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:32:16 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePart (20211217072701)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "shorturl" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","shorturl","clicked","created_at","updated_at")
+                     SELECT "id","url","shorturl","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","created_at","updated_at")
+                     SELECT "id","url","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" integer DEFAULT 0[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:20 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:21 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:21 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:22 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:22 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:33:22 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/shorten/1" for 127.0.0.1 at 2021-12-17 14:33:39 +0700
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/rails/actions" for 127.0.0.1 at 2021-12-17 14:33:41 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePart (20211217072701)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "shorturl" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","shorturl","clicked","created_at","updated_at")
+                     SELECT "id","url","shorturl","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","created_at","updated_at")
+                     SELECT "id","url","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" integer DEFAULT 0[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  
+StandardError (An error has occurred, this and all later migrations canceled:
+
+SQLite3::SQLException: duplicate column name: shortcode):
+  
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `initialize'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `new'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:147:in `prepare'
+sqlite3 (1.4.2) lib/sqlite3/database.rb:193:in `execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:31:in `block (2 levels) in execute'
+activesupport (6.1.4.3) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.1.4.3) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.1.4.3) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:30:in `block in execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:696:in `block (2 levels) in log'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:695:in `block in log'
+activesupport (6.1.4.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract_adapter.rb:687:in `log'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3/database_statements.rb:29:in `execute'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/schema_statements.rb:611:in `add_column'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/sqlite3_adapter.rb:241:in `add_column'
+activerecord (6.1.4.3) lib/active_record/migration.rb:929:in `block in method_missing'
+activerecord (6.1.4.3) lib/active_record/migration.rb:897:in `block in say_with_time'
+/usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+activerecord (6.1.4.3) lib/active_record/migration.rb:897:in `say_with_time'
+activerecord (6.1.4.3) lib/active_record/migration.rb:918:in `method_missing'
+db/migrate/20211217072701_remove_part.rb:6:in `change'
+activerecord (6.1.4.3) lib/active_record/migration.rb:867:in `exec_migration'
+activerecord (6.1.4.3) lib/active_record/migration.rb:851:in `block (2 levels) in migrate'
+/usr/lib/ruby/2.7.0/benchmark.rb:293:in `measure'
+activerecord (6.1.4.3) lib/active_record/migration.rb:850:in `block in migrate'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:462:in `with_connection'
+activerecord (6.1.4.3) lib/active_record/migration.rb:849:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1037:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1329:in `block in execute_migration_in_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1380:in `block in ddl_transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/database_statements.rb:320:in `block in transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.4.3) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+activerecord (6.1.4.3) lib/active_record/connection_adapters/abstract/database_statements.rb:320:in `transaction'
+activerecord (6.1.4.3) lib/active_record/transactions.rb:209:in `transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1380:in `ddl_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1328:in `execute_migration_in_transaction'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1302:in `each'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1302:in `migrate_without_lock'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1253:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1086:in `up'
+activerecord (6.1.4.3) lib/active_record/migration.rb:1061:in `migrate'
+activerecord (6.1.4.3) lib/active_record/tasks/database_tasks.rb:237:in `migrate'
+activerecord (6.1.4.3) lib/active_record/migration.rb:137:in `block in <class:PendingMigrationError>'
+activesupport (6.1.4.3) lib/active_support/actionable_error.rb:28:in `dispatch'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:20:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:35:05 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20211217072701_remove_part.rb
+
+
+):
+  
+activerecord (6.1.4.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.4.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.4.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.4.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.4.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.3) lib/action_dispatch/middleware/host_authorization.rb:100:in `call'
+railties (6.1.4.3) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePart (20211217072701)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "shorturl" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","shorturl","clicked","created_at","updated_at")
+                     SELECT "id","url","shorturl","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "clicked" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashorts" ("id","url","clicked","created_at","updated_at")
+                     SELECT "id","url","clicked","created_at","updated_at" FROM "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shorts" ("id","url","created_at","updated_at")
+                     SELECT "id","url","created_at","updated_at" FROM "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashorts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211217072701"]]
+  [1m[36mTRANSACTION (59.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:35:51 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.6ms | Allocations: 3408)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPart (20211217073630)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "shorts" ADD "shortcode" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "shorts" ADD "redirectcount" integer DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211217073630"]]
+  [1m[36mTRANSACTION (60.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:38:54 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShortsController#index as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 1.1ms | Allocations: 3494)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:39:18 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2223)
+
+
+  
+NoMethodError (undefined method `shorturl' for #<Short:0x000055bb08bd2d88>
+Did you mean?  shorten):
+  
+app/controllers/shorts_controller.rb:54:in `create'
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:40:08 +0700
+Processing by ShortsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 4848)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:40:31 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3192)
+
+
+  
+NoMethodError (undefined method `shorturl' for #<Short:0x00007f528009be18>
+Did you mean?  shorten):
+  
+app/controllers/shorts_controller.rb:62:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:41:37 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "b7b362"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.3ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 07:41:37.975228"], ["updated_at", "2021-12-17 07:41:37.975228"], ["shortcode", "b7b362"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (59.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 79ms (Views: 0.5ms | ActiveRecord: 60.9ms | Allocations: 6911)
+
+
+Started DELETE "/b7b362/delete" for 127.0.0.1 at 2021-12-17 14:42:49 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShortsController#destroy as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "shortcode"=>"b7b362", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mShort Load (0.6ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "b7b362"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."id" BETWEEN ? AND ?[0m  [["id", 3], ["id", 55]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.4ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 45]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (81.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 46]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.6ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 47]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (81.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 48]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (58.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mShort Destroy (0.3ms)[0m  [1m[31mDELETE FROM "shorts" WHERE "shorts"."id" = ?[0m  [["id", 49]]
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+  [1m[36mTRANSACTION (55.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:86:in `destroy'
+Completed 204 No Content in 388ms (Views: 0.1ms | ActiveRecord: 340.3ms | Allocations: 22747)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2021-12-17 14:43:02 +0700
+Processing by ShortsController#create as */*
+  Parameters: {"url"=>"http://ajisaka.com/tentang-kami/", "short"=>{"url"=>"http://ajisaka.com/tentang-kami/"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mShort Create (0.4ms)[0m  [1m[32mINSERT INTO "shorts" ("url", "created_at", "updated_at", "shortcode") VALUES (?, ?, ?, ?)[0m  [["url", "http://ajisaka.com/tentang-kami/"], ["created_at", "2021-12-17 07:43:02.200936"], ["updated_at", "2021-12-17 07:43:02.200936"], ["shortcode", "8be2ca"]]
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+  [1m[36mTRANSACTION (59.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:62:in `create'
+Completed 201 Created in 75ms (Views: 0.8ms | ActiveRecord: 60.7ms | Allocations: 4224)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-17 14:43:07 +0700
+Processing by ShortsController#index as HTML
+  [1m[36mShort Load (0.3ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts"[0m
+  ↳ app/controllers/shorts_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 719)
+
+
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:43:34 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.9ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.9ms | Allocations: 2534)
+
+
+  
+NoMethodError (undefined method `clicked' for #<Short:0x00007f528010fcf0>):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-12-17 14:43:34 +0700
+Processing by ShortsController#show as */*
+  Parameters: {"shortcode"=>"favicon"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "favicon"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 494)
+
+
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:44:48 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.0ms | Allocations: 6691)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x000055bb08ba0298>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:44:53 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 2768)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x00007f5284046270>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:45:16 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.2ms | Allocations: 6690)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x00007f52800b31d0>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:45:17 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms | Allocations: 2768)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x000055bb08fd9620>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:45:18 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.1ms | Allocations: 2768)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x00007f527c0b0ee8>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:45:45 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.3ms | Allocations: 6690)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x00007f528013ede8>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:45:46 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.1ms | Allocations: 2768)
+
+
+  
+NoMethodError (undefined method `redirectCount' for #<Short:0x00007f528412b280>
+Did you mean?  redirectcount=
+               redirectcount?
+               redirectcount_was):
+  
+app/controllers/shorts_controller.rb:19:in `show'
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:46:00 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ?, "redirectcount" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2021-12-17 07:46:00.331992"], ["redirectcount", 1], ["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (59.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 61.1ms | Allocations: 8489)
+
+
+Started GET "/8be2ca/stat" for 127.0.0.1 at 2021-12-17 14:46:07 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 561)
+
+
+Started GET "/8be2ca" for 127.0.0.1 at 2021-12-17 14:46:24 +0700
+Processing by ShortsController#show as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:93:in `set_short'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mShort Update (0.3ms)[0m  [1m[33mUPDATE "shorts" SET "updated_at" = ?, "redirectcount" = ? WHERE "shorts"."id" = ?[0m  [["updated_at", "2021-12-17 07:46:24.586071"], ["redirectcount", 2], ["id", 1]]
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+  [1m[36mTRANSACTION (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shorts_controller.rb:19:in `show'
+Completed 200 OK in 57ms (Views: 0.2ms | ActiveRecord: 49.1ms | Allocations: 4294)
+
+
+Started GET "/8be2ca/stat" for 127.0.0.1 at 2021-12-17 14:46:29 +0700
+Processing by ShortsController#stat as HTML
+  Parameters: {"shortcode"=>"8be2ca"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortcode" = ? LIMIT ?[0m  [["shortcode", "8be2ca"], ["LIMIT", 1]]
+  ↳ app/controllers/shorts_controller.rb:33:in `stat'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 560)
 
 

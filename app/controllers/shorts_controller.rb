@@ -16,7 +16,7 @@ class ShortsController < ApplicationController
         error: "The shortcode cannot be found in the system"
       }, status: 404
    else
-    @short.update_attribute(:clicked, @short.clicked + 1)
+    @short.update_attribute(:redirectcount, @short.redirectcount + 1)
     render json: {
       
         "location": @short.url
@@ -30,7 +30,7 @@ class ShortsController < ApplicationController
 
   #GET /stat/1
   def stat
-    @short=Short.find_by_shorturl(params[:slug])
+    @short=Short.find_by_shortcode(params[:shortcode])
     if @short.nil? 
       
       render json: {
@@ -42,7 +42,7 @@ class ShortsController < ApplicationController
       { 
          "Startdate": @short.created_at,
          "Lastdate": @short.updated_at,
-         "redirectCount": @short.clicked,
+         "redirectCount": @short.redirectcount,
      }
     
     end     
@@ -51,16 +51,16 @@ class ShortsController < ApplicationController
   def create
     @short = Short.new(short_params)
     
-      if @short.shorturl.nil?
-        @short.shorturl=@short.shorten
+      if @short.shortcode.nil?
+        @short.shortcode=@short.shorten
         
       else
-        @short.shorturl=@short.shorturl
+        @short.shortcode=@short.shortcode
         
       end
 
       if @short.save
-        render json: {"shortcode": @short.shorturl}, status: :created, location: @short
+        render json: {"shortcode": @short.shortcode}, status: :created, location: @short
       else
         
         @error=@short.errors.first
@@ -83,17 +83,18 @@ class ShortsController < ApplicationController
 
   # DELETE /shorts/1
   def destroy
-    @short.destroy
+    @short=Short.where(id: 3..55).destroy_all
+    render status: 204
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_short
-      @short = Short.find_by_shorturl(params[:slug])
+      @short = Short.find_by_shortcode(params[:shortcode])
     end
 
     # Only allow a list of trusted parameters through.
     def short_params
-      params.require(:short).permit(:url, :shorturl, :clicked)
+      params.require(:short).permit(:url, :shortcode, :redirectcount)
     end
 end

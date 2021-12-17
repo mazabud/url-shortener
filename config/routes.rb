@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root "shorts#index"
   get "/shorten", to: "shorts#index"
   post "/shorten", to: "shorts#create"
-  get "/:slug", to: "shorts#show"
-  get "/:slug/stat", to: "shorts#stat"
+  get "/:shortcode", to: "shorts#show"
+  get "/:shortcode/stat", to: "shorts#stat"
+  delete "/:shortcode/delete", to: "shorts#destroy"
   
 
   resources :shorts
