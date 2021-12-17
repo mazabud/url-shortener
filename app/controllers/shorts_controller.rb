@@ -50,18 +50,27 @@ class ShortsController < ApplicationController
   # POST /shorts
   def create
     @short = Short.new(short_params)
-    if @short.shorturl.nil?
-      @short.shorturl=@short.shorten
-    else
-      @short.shorturl=@short.shorturl
-    end
+    
+      if @short.shorturl.nil?
+        @short.shorturl=@short.shorten
+        
+      else
+        @short.shorturl=@short.shorturl
+        
+      end
 
-    if @short.save
-      render json: @short, status: :created, location: @short
-    else
-      render json: @short.errors, status: :unprocessable_entity
+      if @short.save
+        render json: {"shortcode": @short.shorturl}, status: :created, location: @short
+      else
+        
+        @error=@short.errors.first
+        #options=ActiveSupport::JSON.encode(@error.options)
+        options=@error.options
+        render json: {error: options[:message]}, status: options[:status]
+        
+      end
     end
-  end
+  
 
   # PATCH/PUT /shorts/1
   def update

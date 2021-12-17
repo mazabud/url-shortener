@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "shorts#index"
-  get "/shorts", to: "shorts#index"
+  get "/shorten", to: "shorts#index"
+  post "/shorten", to: "shorts#create"
   get "/:slug", to: "shorts#show"
   get "/:slug/stat", to: "shorts#stat"
   
