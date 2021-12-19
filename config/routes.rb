@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/shorten", to: "shorts#index"
   post "/shorten", to: "shorts#create"
   get "/:shortcode", to: "shorts#show"
-  get "/:shortcode/stat", to: "shorts#stat"
+  get "/:shortcode/stats", to: "shorts#stat"
   delete "/:shortcode/delete", to: "shorts#destroy"
   
 

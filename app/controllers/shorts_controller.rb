@@ -17,12 +17,8 @@ class ShortsController < ApplicationController
       }, status: 404
    else
     @short.update_attribute(:redirectcount, @short.redirectcount + 1)
-    render json: {
-      
-        "location": @short.url
-      
-      
-    }, status: 200
+    #redirect_to @short.url
+    render status: 302, location: @short.url
    end
     # 
     # render json: @short
@@ -50,14 +46,8 @@ class ShortsController < ApplicationController
   # POST /shorts
   def create
     @short = Short.new(short_params)
+    @short.shortcode=@short.shorten
     
-      if @short.shortcode.nil?
-        @short.shortcode=@short.shorten
-        
-      else
-        @short.shortcode=@short.shortcode
-        
-      end
 
       if @short.save
         render json: {"shortcode": @short.shortcode}, status: :created, location: @short
